@@ -19,17 +19,21 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = cepViewModel
 
-        binding.btnCep.setOnClickListener {
-            val cep = binding.edtCep.text.toString().trim()
-            val cepFilter = Regex("[0-9]{5}-[0-9]{3}")
-            if (!cepFilter.matches(cep)) {
-                binding.edtCep.error = "CEP inválido"
-                return@setOnClickListener
-            }
-            cepViewModel.getCep(cep)
 
+        fun formatCep(cep: String): String {
+            return cep.replace(".", "").replace("-", "").replace(" ", "")
         }
 
+        binding.btnCep.setOnClickListener {
+            val cep = formatCep(binding.edtCep.text.toString())
+            if (cep.length != 8) {
+                binding.edtCep.error = "CEP inválido"
+                return@setOnClickListener
+            } else {
+                cepViewModel.getCep(cep)
+            }
+        }
         setContentView(binding.root)
     }
 }
+
