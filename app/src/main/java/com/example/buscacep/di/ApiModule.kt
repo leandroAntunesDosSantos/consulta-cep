@@ -20,10 +20,13 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(gson: Gson): Retrofit = Retrofit.Builder()
-        .baseUrl("https://viacep.com.br/ws/")
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .build()
+    fun provideRetrofit(gson: Gson):  Retrofit {
+        return Retrofit.Builder()
+            .baseUrl("https://viacep.com.br/ws/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+    }
+
 
     @Singleton
     @Provides
