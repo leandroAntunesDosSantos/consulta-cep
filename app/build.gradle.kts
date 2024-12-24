@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.buscandocep"
+    namespace = "com.example.buscacep"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.buscandocep"
+        applicationId = "com.example.buscacep"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -39,6 +39,14 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+    dependenciesInfo {
+        includeInApk = true
+        includeInBundle = true
+    }
 }
 
 dependencies {
@@ -52,8 +60,13 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    kapt("com.google.dagger:hilt-android-compiler:2.51.1")
+    implementation("com.google.dagger:hilt-android:2.54")
+    kapt("com.google.dagger:hilt-compiler:2.54")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("androidx.fragment:fragment-ktx:1.8.5")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("androidx.databinding:databinding-runtime:7.0.0")
 }
 
 kapt {

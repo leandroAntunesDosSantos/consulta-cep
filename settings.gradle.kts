@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "buscando cep"
+rootProject.name = "BuscaCep"
 include(":app")
  

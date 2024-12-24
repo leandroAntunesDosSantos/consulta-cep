@@ -1,4 +1,4 @@
-package com.example.buscandocep
+package com.example.buscacep
 
 import org.junit.Test
 
