@@ -20,11 +20,14 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = cepViewModel
 
         binding.btnCep.setOnClickListener {
-            val cep = binding.edtCep.text.toString()
-
-            if (cep.isNotEmpty()) {
-                cepViewModel.getCep(cep)
+            val cep = binding.edtCep.text.toString().trim()
+            val cepFilter = Regex("[0-9]{5}-[0-9]{3}")
+            if (!cepFilter.matches(cep)) {
+                binding.edtCep.error = "CEP inválido"
+                return@setOnClickListener
             }
+            cepViewModel.getCep(cep)
+
         }
 
         setContentView(binding.root)
